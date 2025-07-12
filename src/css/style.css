@@ -204,7 +204,7 @@ button {
 }
 
 .msrp {
-  text-decoration-thickness: 10px;
+  text-decoration-thickness: 2px;
   text-decoration: line-through;
   color: rgb(241, 18, 18);
 }
