@@ -252,6 +252,19 @@ button {
   grid-column: 3;
 }
 
+#product-count {
+  display: flex;
+  justify-content: center;
+  background-color: var(--tertiary-color);
+  position: absolute;
+  top: 0;
+  padding: 4px;
+  border-radius: 2rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
