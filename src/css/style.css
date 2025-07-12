@@ -203,6 +203,17 @@ button {
   width: 100%;
 }
 
+.msrp {
+  text-decoration-thickness: 10px;
+  text-decoration: line-through;
+  color: rgb(241, 18, 18);
+}
+.product-card__discount {
+  color: var(--tertiary-color);
+  font-weight: bold;
+}
+
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
