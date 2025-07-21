@@ -1,18 +1,23 @@
 import { getLocalStorage } from "./utils.mjs";
 
-const cartElement = document.querySelector(".cart");
+export function showCartCount() {
+  const cartElement = document.querySelector(".cart");
 
-const cartItems = getLocalStorage("so-cart");
-let prodCount = 0;
+  const cartItems = getLocalStorage("so-cart");
+  let prodCount = 0;
 
-if(cartItems){
+  if (cartItems) {
     prodCount = cartItems.length;
-}
+  }
 
-if(prodCount > 0) {
-  cartElement.insertAdjacentHTML("afterbegin", '<div id="product-count"></div>')
+  if (prodCount > 0) {
+    cartElement.insertAdjacentHTML(
+      "afterbegin",
+      "<div id='product-count'></div>",
+    );
 
-  const countElement = document.querySelector("#product-count");
-  
-  countElement.innerHTML = prodCount;
+    const countElement = document.querySelector("#product-count");
+
+    countElement.innerHTML = prodCount;
+  }
 }
