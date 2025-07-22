@@ -11,13 +11,14 @@ export function showCartCount() {
   }
 
   if (prodCount > 0) {
-    cartElement.insertAdjacentHTML(
-      "afterbegin",
-      "<div id='product-count'></div>",
-    );
+    if (cartElement) {
+      cartElement.insertAdjacentHTML(
+        "afterbegin",
+        "<div id='product-count'></div>",
+      );
+      const countElement = document.querySelector("#product-count");
 
-    const countElement = document.querySelector("#product-count");
-
-    countElement.innerHTML = prodCount;
+      countElement.innerHTML = prodCount;
+    }
   }
 }

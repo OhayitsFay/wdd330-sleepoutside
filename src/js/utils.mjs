@@ -70,7 +70,9 @@ export async function loadTemplate(path) {
   return template;
 }
 
-export async function loadHeaderFooter(headerPath, footerPath) {
+export async function loadHeaderFooter() {
+  const headerPath = "/partial/header.html";
+  const footerPath =  "/partial/footer.html";
   const headerTarget = document.getElementsByTagName("header")[0];
   const footerTarget = document.getElementsByTagName("footer")[0];
   renderWithTemplate(
