@@ -5,7 +5,7 @@ function productDetailsTemplate(product) {
     <h2 class="divider">${product.NameWithoutBrand}</h2>
     <img
       class="divider"
-      src="${product.Image.PrimaryLarge}"
+      src="${product.Images.PrimaryLarge}"
       alt="${product.NameWithoutBrand}"
     />
     <p class="msrp">$${product.SuggestedRetailPrice}</p>
@@ -19,7 +19,6 @@ function productDetailsTemplate(product) {
       <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
     </div></section>`;
 }
-
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
