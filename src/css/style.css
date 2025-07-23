@@ -261,6 +261,13 @@ button {
   grid-row: 2;
   grid-column: 3;
 }
+.cart-footer {
+  font-weight: 800;
+  padding: 1em;
+}
+.cart-footer.hide {
+  display: none;
+}
 
 #product-count {
   display: flex;

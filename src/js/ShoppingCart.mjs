@@ -1,4 +1,4 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate, getLocalStorage } from "./utils.mjs";
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
@@ -11,12 +11,28 @@ function cartItemTemplate(item) {
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
-  <span class="cart-card__remove" data-id=${item.Id}>❌</span>
+  <button class="cart-card__remove" data-id=${item.Id}>❌</button>
 </li>`;
 
   return newItem;
 }
 
+function cartTotal() {
+  let total = getLocalStorage("so-cart");
+  total = total ? getLocalStorage("so-cart") : [];
+
+  let totalCart = 0;
+  for (let i = 0; i < total.length; i++) {
+    let item = total[i];
+    totalCart += item.FinalPrice;
+  }
+
+  if (totalCart > 0) {
+    const cartTotalElement = document.querySelector(".cart-footer");
+    cartTotalElement.classList.remove("hide");
+    cartTotalElement.innerHTML = `Total: $${totalCart}`;
+  }
+}
 export default class ShoppingCart {
   constructor(dataSource, listElement) {
       this.dataSource = dataSource;
@@ -31,3 +47,5 @@ export default class ShoppingCart {
     renderListWithTemplate(cartItemTemplate, this.listElement, this.dataSource);
   }
 }
+
+cartTotal()
