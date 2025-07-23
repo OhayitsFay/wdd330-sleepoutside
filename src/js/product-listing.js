@@ -25,3 +25,9 @@ const element = document.querySelector(".product-list");
 const listing = new ProductList(category, dataSource, element);
 
 listing.init();
+
+const sortElement = document.getElementById('sortBox');
+
+sortElement.addEventListener('change', function () {
+  listing.sortBy(sortElement.value);
+});
