@@ -12,7 +12,17 @@
     </header>
     <main class="divider">
       <section class="products">
-        <h2>Top Products: <span class="title highlight"></span></h2>
+        <div class="product-list-header">
+          <h2 id="heading"></h2>
+          <label for="sortBox"
+            >Sort by:
+            <select name="sort" id="sortBox">
+              <option value="" disabled selected>select</option>
+              <option value="name">name</option>
+              <option value="price">price</option>
+            </select>
+          </label>
+        </div>
         <ul class="product-list"></ul>
       </section>
     </main>
