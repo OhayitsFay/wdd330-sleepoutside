@@ -1,4 +1,4 @@
-import { showCartCount } from "./cartCount";
+import { showCartCount } from "./cartCount.js";
 
 function convertToText(res) {
   if (res.ok) {
