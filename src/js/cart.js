@@ -24,4 +24,3 @@ function renderCartContents() {
 }
 
 renderCartContents();
-showCartCount();
