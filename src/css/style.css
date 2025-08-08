@@ -367,6 +367,27 @@ input {
 
 .bold {
   font-weight: bold;
+  .alert {
+  background-color: #f44336; /* red */
+  color: white;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 4px;
+  position: relative;
+  font-weight: bold;
+}
+
+.alert-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em;
+  background-color: var(--primary-color);
+  border: 1px solid darkorange;
+}
+.alert-box > p {
+  margin: 0;
+}
 }
 @media screen and (min-width: 500px) {
   body {

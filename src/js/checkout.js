@@ -9,7 +9,15 @@ orderSummary.init();
 
 orderSummary.calculateOrdertotal();
 
-document.querySelector("#checkout").addEventListener("submit", function (event) {
-  event.preventDefault();
+document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const form = document.forms["checkout"];
+  const isValid = form.checkValidity();
+
+  if (!isValid) {
+    form.reportValidity();
+    return;
+  }
   orderSummary.checkout();
 });
