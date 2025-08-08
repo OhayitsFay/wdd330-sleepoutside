@@ -85,3 +85,15 @@ export async function loadHeaderFooter() {
     () => showCartCount());
   renderWithTemplate(loadTemplate, footerTarget, footerPath);
 }
+
+export function alertMessage(message, scroll = true) {
+  const alert = document.createElement("div");
+  alert.classList.add("alert-box");
+  alert.innerHTML = `<div class="alert"> <p>${message}</p> </div>`;
+
+  document.querySelector("main").prepend(alert);
+
+  if(scroll) window.scrollTo({ top: 0, behavior: "smooth"});
+
+  setTimeout(() => alert.remove(), 5000);
+}

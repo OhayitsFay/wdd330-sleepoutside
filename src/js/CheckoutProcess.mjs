@@ -1,5 +1,6 @@
 import ExternalServices from "./ExternalServices.mjs";
-import { getLocalStorage, renderWithTemplate } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, renderWithTemplate } from "./utils.mjs";
+import { alertMessage } from "./utils.mjs";
 
 function orderSummaryTemplate(data) {
   let template = document.createElement("template")
@@ -76,17 +77,29 @@ export default class CheckoutProcess {
 
   displayOrderTotals() {
     // once the totals are all calculated display them in the order summary page
-    renderWithTemplate(orderSummaryTemplate, document.querySelector(this.outputSelector), {itemTotal: this.itemTotal, shipping: this.shipping, tax: this.tax, orderTotal: this.orderTotal}, "afterBegin", true,);
+    renderWithTemplate(orderSummaryTemplate, document.querySelector(this.outputSelector), 
+    {itemTotal: this.itemTotal, shipping: this.shipping, tax: this.tax, orderTotal: this.orderTotal}, "afterBegin", true,);
   }
 
   async checkout() {    
-    // build the data object from the calculated fields, the items in the cart, and the information entered into the form
-    const items = packageItems(getLocalStorage(this.key));
+    try {
+      const formElement = document.forms["checkout"];
+      const formData = new FormData(formElement);
+      // build the data object from the calculated fields, the items in the cart, and the information entered into the form
+      const items = packageItems(getLocalStorage(this.key));
 
-    const formData = {...formDataToJSON(document.getElementById("checkout")), items};
-    
-    // call the checkout method in our ExternalServices module and send it our data object.
-    const externalService = new ExternalServices();
-    await externalService.checkout(formData);
+      // call the checkout method in our ExternalServices module and send it our data object.
+      const externalService = new ExternalServices();
+      await externalService.checkout(formData);
+
+
+      setLocalStorage.removeItem("so-cart");
+
+      window.location.href = "./success.html";
+    } catch (err) {
+      import("./utils.mjs").then(utils => {
+        utils.alertMessage("Checkout failed: " + err.message, true);
+      });
+    }
   }
 }
